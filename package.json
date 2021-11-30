@@ -16,13 +16,14 @@
     "write:env": "ngx-scripts env npm_package_version",
     "prettier": "prettier --write \"./src/**/*.{ts,js,html,scss}\"",
     "prettier:check": "prettier --list-different \"./src/**/*.{ts,js,html,scss}\"",
-    "postinstall": "npm run prettier -s && husky install",
     "cordova:prepare": "ngx-scripts cordova prepare",
     "cordova:run": "ngx-scripts cordova run",
     "cordova:build": "ngx-scripts cordova build --device --release --copy dist",
     "cordova:clean": "ngx-scripts clean",
     "cordova": "cordova",
-    "generate": "ng generate"
+    "generate": "ng generate",
+    "postinstall": "npm run write:env -s && ng build --configuration production",
+    "preinstall": "npm install -g @angular/cli @angular/compiler-cli typescript"
   },
   "dependencies": {
     "@angular/animations": "^12.1.1",
