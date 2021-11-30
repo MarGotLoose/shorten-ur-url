@@ -17,6 +17,7 @@ import { ShellModule } from './shell/shell.module';
 import { SettingsModule } from './settings/settings.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [

@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '@env/environment';
 import { finalize } from 'rxjs/operators';
+import { ShortenerService } from './shortener.service';
 
-import { QuoteService } from './quote.service';
+interface URLCard {
+  long_url: string;
+  short_url: string;
+  created_at: string;
+}
 
 @Component({
   selector: 'app-home',
@@ -11,12 +17,15 @@ import { QuoteService } from './quote.service';
 export class HomeComponent implements OnInit {
   quote: string | undefined;
   isLoading = false;
+  inputURL: any = '';
+  outputURL: any = '';
+  URLCards: URLCard[] = [];
 
-  constructor(private quoteService: QuoteService) {}
+  constructor(private shortenerService: ShortenerService) {}
 
   ngOnInit() {
-    this.isLoading = true;
-    this.quoteService
+    this.isLoading = false;
+    /*this.quoteService
       .getRandomQuote({ category: 'dev' })
       .pipe(
         finalize(() => {
@@ -25,6 +34,17 @@ export class HomeComponent implements OnInit {
       )
       .subscribe((quote: string) => {
         this.quote = quote;
+      });*/
+  }
+
+  shortURL(url: string) {
+    this.shortenerService.postURL(url).subscribe((result: any) => {
+      console.log(result);
+      this.URLCards.push({
+        long_url: result.url,
+        short_url: environment.serverUrl + '/' + result.code,
+        created_at: new Date(result.created_at).toUTCString(),
       });
+    });
   }
 }

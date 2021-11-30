@@ -2,19 +2,19 @@ import { Type } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-import { QuoteService } from './quote.service';
+import { ShortenerService } from './shortener.service';
 
-describe('QuoteService', () => {
-  let quoteService: QuoteService;
+describe('ShortenerService', () => {
+  let quoteService: ShortenerService;
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [QuoteService],
+      providers: [ShortenerService],
     });
 
-    quoteService = TestBed.inject(QuoteService);
+    quoteService = TestBed.inject(ShortenerService);
     httpMock = TestBed.inject(HttpTestingController as Type<HttpTestingController>);
   });
 
@@ -22,7 +22,7 @@ describe('QuoteService', () => {
     httpMock.verify();
   });
 
-  describe('getRandomQuote', () => {
+  /*describe('getRandomQuote', () => {
     it('should return a random Chuck Norris quote', () => {
       // Arrange
       const mockQuote = { value: 'a random quote' };
@@ -51,5 +51,5 @@ describe('QuoteService', () => {
         statusText: 'error',
       });
     });
-  });
+  });*/
 });
