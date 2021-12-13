@@ -1,10 +1,16 @@
 <ion-header>
-  <!--<ion-toolbar color="primary">
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title><span translate>Shorten Ur URL</span></ion-title>
-  </ion-toolbar>-->
+    <div>
+      <ion-title>
+        <img src="assets/icono.png" width="25" height="25" />
+        <span translate>Shorten Ur URL</span>
+        <app-language-selector style="float: right"></app-language-selector>
+      </ion-title>
+    </div>
+  </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-card class="ion-text-center">
@@ -13,18 +19,15 @@
         <ion-card-title>
           <span translate>Welcome to Shorten Ur URL!</span>
         </ion-card-title>
-        <p transalate>The website in which you can easily shorten your URLs! And free!</p>
+        <p translate>The website in which you can easily shorten your URLs! And free!</p>
       </div>
       <div id="waveB">
+        <img src="assets/edwardscissorhands.gif" alt="Edward Scissorhands" />
         <ion-card>
           <ion-card-content>
             <div class="input-group">
               <ion-item>
-                <ion-input
-                  placeholder="Enter the URL you want to shorten"
-                  type="text"
-                  [(ngModel)]="inputURL"
-                ></ion-input>
+                <ion-input placeholder="https://www.google.es" type="text" [(ngModel)]="inputURL"></ion-input>
                 <ion-button id="shorten_btn" fill="solid" color="tertiary" (click)="shortURL(inputURL)">
                   <ion-icon name="cut-outline"></ion-icon>
                 </ion-button>
@@ -50,7 +53,7 @@
     </ion-card-header>
     <ion-card-content>
       <ion-item> <b>Original URL: </b> {{ card.long_url }} </ion-item>
-      <ion-item> <b>Created at: </b> {{ card.created_at * 1000 | date: 'dd/MM/yyyy, hh:mm' }} </ion-item>
+      <ion-item> <b>Created at: </b> {{ card.created_at * 1000 | date: 'dd/MM/yyyy, hh:mm a' }} </ion-item>
     </ion-card-content>
   </ion-card>
 </ion-content>

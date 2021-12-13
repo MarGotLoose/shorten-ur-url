@@ -4,6 +4,7 @@ import { finalize } from 'rxjs/operators';
 import { ShortenerService } from './shortener.service';
 
 interface URLCard {
+  hostname: string;
   long_url: string;
   short_url: string;
   created_at: number;
@@ -41,6 +42,7 @@ export class HomeComponent implements OnInit {
     this.shortenerService.postURL(url).subscribe((result: any) => {
       console.log(result);
       this.URLCards.push({
+        hostname: result.url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/)[1],
         long_url: result.url,
         short_url: environment.serverUrl + '/' + result.code,
         created_at: result.created_at,
