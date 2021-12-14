@@ -27,7 +27,12 @@
           <ion-card-content>
             <div class="input-group">
               <ion-item>
-                <ion-input placeholder="https://www.google.es" type="text" [(ngModel)]="inputURL"></ion-input>
+                <ion-input
+                  (keyup.enter)="shortURL(inputURL)"
+                  placeholder="https://www.google.es"
+                  type="text"
+                  [(ngModel)]="inputURL"
+                ></ion-input>
                 <ion-button id="shorten_btn" fill="solid" color="tertiary" (click)="shortURL(inputURL)">
                   <ion-icon name="cut-outline"></ion-icon>
                 </ion-button>
